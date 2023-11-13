@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import morgan from 'morgan'
 import path from 'path'
 import swaggerUi from 'swagger-ui-express'
+import router from './routes'
 
 //For env File
 dotenv.config()
@@ -26,6 +27,7 @@ app.use(
     })
 )
 
+app.use(router)
 //Add routing
 app.get('/', (req: Request, res: Response) => {
     res.send('Welcome to Express & TypeScript KriticArt server')
