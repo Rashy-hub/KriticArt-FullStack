@@ -2,6 +2,7 @@ import express, { Request, Response, Application } from 'express'
 import dotenv from 'dotenv'
 import morgan from 'morgan'
 import path from 'path'
+import swaggerUi from 'swagger-ui-express'
 
 //For env File
 dotenv.config()
@@ -14,6 +15,16 @@ const port = process.env.PORT || 8000
 app.use(express.json())
 app.use(morgan('tiny'))
 app.use('/', express.static(path.join(__dirname, '../public')))
+//setup middleware for swagger docs as json
+app.use(
+    '/docs',
+    swaggerUi.serve,
+    swaggerUi.setup(undefined, {
+        swaggerOptions: {
+            url: '/swagger.json',
+        },
+    })
+)
 
 //Add routing
 app.get('/', (req: Request, res: Response) => {
