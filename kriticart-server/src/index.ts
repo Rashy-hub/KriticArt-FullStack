@@ -27,7 +27,7 @@ app.use(
     })
 )
 
-app.use(router)
+app.use('/api', router)
 //Add routing
 app.get('/', (req: Request, res: Response) => {
     res.send('Welcome to Express & TypeScript KriticArt server')

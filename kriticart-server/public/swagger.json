@@ -10,6 +10,9 @@
 				"properties": {
 					"message": {
 						"type": "string"
+					},
+					"body": {
+						"type": "string"
 					}
 				},
 				"required": [
@@ -34,6 +37,35 @@
 	},
 	"openapi": "3.0.0",
 	"paths": {
+		"/auth": {
+			"post": {
+				"operationId": "Register",
+				"responses": {
+					"200": {
+						"description": "Ok",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/PingResponse"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string"
+							}
+						}
+					}
+				}
+			}
+		},
 		"/ping": {
 			"get": {
 				"operationId": "GetMessage",
